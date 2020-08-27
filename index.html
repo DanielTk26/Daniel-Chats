@@ -1,0 +1,90 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBCReJKnOmsFvrQ_W6RO3_uDtcfWHOCWiQ",
+    authDomain: "post-47225.firebaseapp.com",
+    databaseURL: "https://post-47225.firebaseio.com",
+    projectId: "post-47225",
+    storageBucket: "post-47225.appspot.com",
+    messagingSenderId: "28098331055",
+    appId: "1:28098331055:web:24e4993daf6d72dffc2f5a"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  var myName = prompt("Enter Your Name");
+
+   
+   function sendMessage() {
+    
+   // get message
+
+   var message = document.getElementById("message").value
+   
+   // save in database
+   firebase.database().ref("messages").push().set({
+    "sender": myName,
+    "message": message,
+   });
+
+
+   // prevent form from from submitting
+   return false;
+   }
+
+
+
+  firebase.database().ref("messages").on("child_added", function (snapshot) {
+   var html = "";
+   
+   html += "<li id='message-" + snapshot.key + "'>";
+
+    if(snapshot.val().sender == myName) {
+      html += "<button data-id='" + snapshot.key + "' onClick='deleteMessage(this);'>";
+        html += "Delete"
+      html += "</button>";
+    }
+
+   html += snapshot.val().sender +": " + snapshot.val().message;
+   html += "</li>";
+
+   document.getElementById("messages").innerHTML += html;
+  });
+
+  
+
+ function deleteMessage(self) {
+ // get Message ID
+  var messageId = self.getAttribute("data-id"); 
+
+ // delete message
+  firebase.database().ref("messages").child(messageId).remove(); 
+
+ }
+
+
+ firebase.database().ref("messages").on("child_removed", function(snapshot) {
+
+
+  document.getElementById("message-" + snapshot.key).innerHTML = "This Post Has Been Deleted";
+ });
+
+</script>
+
+<form onSubmit ="return sendMessage();">
+
+<input id = "message" placeholder="Type,Location,Age,Ph.Number" autocomplete="off">
+<input type="submit">
+
+</form>
+
+
+<ul id="messages"></ul>
