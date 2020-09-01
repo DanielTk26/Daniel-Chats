@@ -1,7 +1,16 @@
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+<!DOCTYPE html>
+<head>
+<title>Daniel Chats</title>
+<h1>Welcome To Daniel Chats !!!</h1>
 
-<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+
+</head>
+</html>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -9,15 +18,17 @@
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: "AIzaSyBCReJKnOmsFvrQ_W6RO3_uDtcfWHOCWiQ",
-    authDomain: "post-47225.firebaseapp.com",
-    databaseURL: "https://post-47225.firebaseio.com",
-    projectId: "post-47225",
-    storageBucket: "post-47225.appspot.com",
-    messagingSenderId: "28098331055",
-    appId: "1:28098331055:web:24e4993daf6d72dffc2f5a"
+    apiKey: "AIzaSyCCwRF-Wq8Q12OHH37U6pc1N5gzpfWp6lc",
+    authDomain: "daniel-chats-5ffda.firebaseapp.com",
+    databaseURL: "https://daniel-chats-5ffda.firebaseio.com",
+    projectId: "daniel-chats-5ffda",
+    storageBucket: "daniel-chats-5ffda.appspot.com",
+    messagingSenderId: "297466251424",
+    appId: "1:297466251424:web:f39a4ed62ee5daa202e1c5"
   };
-  // Initialize Firebase
+  
+
+// Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
   var myName = prompt("Enter Your Name");
@@ -81,10 +92,11 @@
 
 <form onSubmit ="return sendMessage();">
 
-<input id = "message" placeholder="Type,Location,Age,Ph.Number" autocomplete="off">
+<input id = "message" placeholder="Type In Your Message" autocomplete="off">
 <input type="submit">
 
 </form>
 
 
 <ul id="messages"></ul>
+  
