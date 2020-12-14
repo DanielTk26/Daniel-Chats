@@ -1,0 +1,27 @@
+body {
+ 
+  background-color: rgb(238, 232, 227);
+  background-image: url("b.png");
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.container {
+  margin-left: 360px ;
+  margin-top: 100px;
+  width: 10%;
+ 
+}
+
+.button {
+    margin-left: 613px; 
+    margin-top: -45px;
+    height: 30px;    
+}
+
+.mess {
+    font-size: large;
+    font-style: italic;
+}
+

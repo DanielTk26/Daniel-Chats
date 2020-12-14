@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <head>
 <title>Daniel Chats</title>
-<h1>Welcome To Daniel Chats !!!</h1>
+
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
 
 </head>
 </html>
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -18,20 +21,19 @@
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: "AIzaSyCCwRF-Wq8Q12OHH37U6pc1N5gzpfWp6lc",
-    authDomain: "daniel-chats-5ffda.firebaseapp.com",
-    databaseURL: "https://daniel-chats-5ffda.firebaseio.com",
-    projectId: "daniel-chats-5ffda",
-    storageBucket: "daniel-chats-5ffda.appspot.com",
-    messagingSenderId: "297466251424",
-    appId: "1:297466251424:web:f39a4ed62ee5daa202e1c5"
+    apiKey: "AIzaSyDdhwbA165GAAmKchNe-Wp2G3Ct2GHV5tc",
+    authDomain: "daniel-chats-8e2c7.firebaseapp.com",
+    projectId: "daniel-chats-8e2c7",
+    storageBucket: "daniel-chats-8e2c7.appspot.com",
+    messagingSenderId: "882121498342",
+    appId: "1:882121498342:web:2fbd186db1409058bde527"
   };
-  
-
-// Initialize Firebase
+  // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-  var myName = prompt("Enter Your Name");
+
+  var myName = prompt("Enter Your Full Name and leave a message!");
+  var wait = alert("Hey there!! Wait till you see messages appear on your screen as it takes time to load from the database.");
 
    
    function sendMessage() {
@@ -57,6 +59,7 @@
    var html = "";
    
    html += "<li id='message-" + snapshot.key + "'>";
+
 
     if(snapshot.val().sender == myName) {
       html += "<button data-id='" + snapshot.key + "' onClick='deleteMessage(this);'>";
@@ -85,18 +88,24 @@
  firebase.database().ref("messages").on("child_removed", function(snapshot) {
 
 
-  document.getElementById("message-" + snapshot.key).innerHTML = "This Post Has Been Deleted";
+  document.getElementById("message-" + snapshot.key).innerHTML = "Your message has Been Deleted";
  });
 
 </script>
 
 <form onSubmit ="return sendMessage();">
 
-<input id = "message" placeholder="Type In Your Message" autocomplete="off">
-<input type="submit">
+  <div class = "container">
+<input id = "message" placeholder="Type In Your Message" style="width: 196px; height: 37px;">
+</div>
+
+ <div class = "button" >
+<input type="submit" style="width: 86px; height: 47px;">
+</div>
 
 </form>
 
 
-<ul id="messages"></ul>
-  
+<div class = "mess">
+<ul id="messages" style="margin-top:68px; margin-left: 320px; "></ul>
+</div>
