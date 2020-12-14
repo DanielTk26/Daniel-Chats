@@ -58,7 +58,7 @@
   firebase.database().ref("messages").on("child_added", function (snapshot) {
    var html = "";
    
-   html += "<li id='message-" + snapshot.key + "'>";
+   html += "<p id='message-" + snapshot.key + "'>";
 
 
     if(snapshot.val().sender == myName) {
@@ -68,7 +68,7 @@
     }
 
    html += snapshot.val().sender +": " + snapshot.val().message;
-   html += "</li>";
+   html += "</p>";
 
    document.getElementById("messages").innerHTML += html;
   });
@@ -107,5 +107,5 @@
 
 
 <div class = "mess">
-<ul id="messages" style="margin-top:68px; margin-left: 320px; "></ul>
+<ul id="messages" style="margin-top:68px; margin-left: 260px; "></ul>
 </div>
