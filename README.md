@@ -1,3 +1,3 @@
-# Super Teen Coders Chat
-## This a chat system for everyone belonging to Super Teen Coders. Feel free to share an idea or just a message.....
-Output Link: https://super-teen-coders.github.io/Super-Teen-Coders-Chat/
+# Daniel Chats
+
+Have a temporary conversation with me. I like meeting and making new friends :).... Output link: https://danieltk26.github.io/Daniel-Chats/index.html

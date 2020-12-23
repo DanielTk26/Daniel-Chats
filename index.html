@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Super Teen Coders Chat</title>
+    <title>Daniel Chats</title>
     <style>
       body {
         background-image: url("back.png");
@@ -154,7 +154,7 @@ padding: 0;
   </head>
   <body>
     <div class="header">
-      Super Teen Coders Chat
+      Welcome To Daniel Chats
     </div>
     <div class="message-body">
       <img
@@ -168,21 +168,23 @@ padding: 0;
       </center>
     </div>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   
+    <!--FIREBASE script link-->
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase.js"></script>
-    <script>
+   
+   <script>
 
-      var inst = alert("Hey there! Welcome to super Teen Coders Chat! Wait for a PopUp message asking your name and start chatting.");
-      var wait = alert("Once you are done with that, wait for the messages to appear on the screen as it takes time to load from the database. Just a few seconds!");
-
-       var firebaseConfig = {
-    apiKey: "AIzaSyC9OW3wCmLuyrZW6sZhjGMK4sP0Pi0v2oQ",
-    authDomain: "chat-app-47e42.firebaseapp.com",
-    databaseURL: "https://chat-app-47e42-default-rtdb.firebaseio.com",
-    projectId: "chat-app-47e42",
-    storageBucket: "chat-app-47e42.appspot.com",
-    messagingSenderId: "121288975978",
-    appId: "1:121288975978:web:bc18b0c7f73e800678cc13",
-    measurementId: "G-DTMMSJ0BPX"
+      var inst = alert("Hey there! Wecome to Daniel Chats! Wait for a PopUp message asking your name and start chatting.");
+   
+      var firebaseConfig = {
+    apiKey: "AIzaSyBbdEj3wgauZWOnWqMrnkHvQ5wMJjSlZv4",
+    authDomain: "daniel-chats-c92e1.firebaseapp.com",
+    databaseURL: "https://daniel-chats-c92e1-default-rtdb.firebaseio.com",
+    projectId: "daniel-chats-c92e1",
+    storageBucket: "daniel-chats-c92e1.appspot.com",
+    messagingSenderId: "743803231629",
+    appId: "1:743803231629:web:505aa748b0991c2c86f1c4",
+    measurementId: "G-YJJQ4XN7N3"
   };
       firebase.initializeApp(firebaseConfig);
       setInterval(() => {
