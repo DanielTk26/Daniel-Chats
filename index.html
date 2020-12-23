@@ -1,111 +1,302 @@
 <!DOCTYPE html>
-<head>
-<title>Daniel Chats</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Teen Coders Chat</title>
+    <style>
+      body {
+        background-image: url("back.png");
+        background-size: cover;
+padding: 0;
+        margin: 0;
+      }
+      .header {
+        height: 50px;
+        width: 100%;
+        text-align: center;
+        color: rgb(35, 48, 170);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        font-size: 40px;
+      }
+      .message-body {
+        height: 200px;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+      }
+      .footer {
+        position: absolute;
+        height: 60px;
+        width: 100%;
+        margin: auto;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+      .message-input {
+        height: 0;
+        width: 80%;
+        padding: 20px;
+        font-size: 17px;
+        outline: none;
+        border: 0;
+        color: rgb(14, 12, 12);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background: transparent;
+        border-bottom: 3px solid rgb(54, 54, 116);
+        transition: 0.3s;
+      }
+      .message-input:focus {
+        border-bottom: 3px solid rgb(111, 111, 236);
+      }
+      .message-holder {
+        width: 100%;
+        height: fit-content;
+        margin-bottom: 5px;
+        display: inline-flex;
+        font-size: 17px;
+      }
+      .my-text {
+        height: fit-content;
+        width: fit-content;
+        padding: 20px;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background: rgb(4, 4, 17);
+        margin-left: auto;
+        right: 0;
+        max-width: 200px;
+        border-radius: 7px;
+        margin-right: 20px;
+      }
+      .their-name {
+        color: black;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        height: fit-content;
+        width: fit-content;
+        margin-right: auto;
+        left: 0;
+        margin-left: 25px;
+        margin-bottom: 5px;
+      }
+      .my-name {
+        color: black;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        height: fit-content;
+        width: fit-content;
+        margin-left: auto;
+        right: 0;
+        margin-right: 25px;
+        margin-bottom: 5px;
+      }
+      .their-text {
+        height: fit-content;
+        width: fit-content;
+        padding: 20px;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background: linear-gradient(45deg, rgb(0, 63, 145), rgb(98, 0, 107));
+        margin-right: auto;
+        left: 0;
+        max-width: 200px;
+        border-radius: 7px;
+        margin-left: 20px;
+      }
+      .loader {
+        position: absolute;
+        height: 100px;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        opacity: 1;
+        transition: 0.2s;
+      }
+      .swal-text {
+        color: white;
+        font-size: 30px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      }
+      .swal-content__input {
+        background: transparent;
+        border: 0;
+        outline: none;
+        color: white;
+        font-size: 20px;
+        border-bottom: 3px solid rgb(54, 54, 116);
+      }
+      .swal-button {
+        background-color: rgb(18, 18, 36);
+      }
+      .swal-button:not([disabled]):hover {
+        background-color: rgb(18, 18, 36);
+      }
+      .swal-overlay swal-overlay--show-modal ::before {
+        outline: none;
+      }
+      .swal-content__input:focus {
+        border-bottom: 3px solid rgb(111, 111, 236);
+      }
+      .swal-modal {
+        background-color: rgb(42, 42, 80);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      Super Teen Coders Chat
+    </div>
+    <div class="message-body">
+      <img
+        src="spinner.gif"
+        class="loader"
+      />
+    </div>
+    <div class="footer">
+      <center>
+        <input type="text" placeholder="Enter message" class="message-input" />
+      </center>
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase.js"></script>
+    <script>
 
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+      var inst = alert("Hey there! Welcome to super Teen Coders Chat! Wait for a PopUp message asking your name and start chatting.");
+      var wait = alert("Once you are done with that, wait for the messages to appear on the screen as it takes time to load from the database. Just a few seconds!");
 
-
-</head>
-</html>
-
-
-
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDdhwbA165GAAmKchNe-Wp2G3Ct2GHV5tc",
-    authDomain: "daniel-chats-8e2c7.firebaseapp.com",
-    projectId: "daniel-chats-8e2c7",
-    storageBucket: "daniel-chats-8e2c7.appspot.com",
-    messagingSenderId: "882121498342",
-    appId: "1:882121498342:web:2fbd186db1409058bde527"
+       var firebaseConfig = {
+    apiKey: "AIzaSyC9OW3wCmLuyrZW6sZhjGMK4sP0Pi0v2oQ",
+    authDomain: "chat-app-47e42.firebaseapp.com",
+    databaseURL: "https://chat-app-47e42-default-rtdb.firebaseio.com",
+    projectId: "chat-app-47e42",
+    storageBucket: "chat-app-47e42.appspot.com",
+    messagingSenderId: "121288975978",
+    appId: "1:121288975978:web:bc18b0c7f73e800678cc13",
+    measurementId: "G-DTMMSJ0BPX"
   };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
-
-  var myName = prompt("Enter Your Full Name and leave a message!");
-  var wait = alert("Hey there!! Wait till you see messages appear on your screen as it takes time to load from the database.");
-
-   
-   function sendMessage() {
-    
-   // get message
-
-   var message = document.getElementById("message").value
-   
-   // save in database
-   firebase.database().ref("messages").push().set({
-    "sender": myName,
-    "message": message,
-   });
-
-
-   // prevent form from from submitting
-   return false;
-   }
-
-
-
-  firebase.database().ref("messages").on("child_added", function (snapshot) {
-   var html = "";
-   
-   html += "<p id='message-" + snapshot.key + "'>";
-
-
-    if(snapshot.val().sender == myName) {
-      html += "<button data-id='" + snapshot.key + "' onClick='deleteMessage(this);'>";
-        html += "Delete"
-      html += "</button>";
-    }
-
-   html += snapshot.val().sender +": " + snapshot.val().message;
-   html += "</p>";
-
-   document.getElementById("messages").innerHTML += html;
-  });
-
-  
-
- function deleteMessage(self) {
- // get Message ID
-  var messageId = self.getAttribute("data-id"); 
-
- // delete message
-  firebase.database().ref("messages").child(messageId).remove(); 
-
- }
-
-
- firebase.database().ref("messages").on("child_removed", function(snapshot) {
-
-
-  document.getElementById("message-" + snapshot.key).innerHTML = "Your message has Been Deleted";
- });
-
-</script>
-
-<form onSubmit ="return sendMessage();">
-
-  <div class = "container">
-<input id = "message" placeholder="Type In Your Message" style="width: 196px; height: 37px;">
-</div>
-
- <div class = "button" >
-<input type="submit" style="width: 86px; height: 47px;">
-</div>
-
-</form>
-
-
-<div class = "mess">
-<ul id="messages" style="margin-top:68px; margin-left: 260px; "></ul>
-</div>
+      firebase.initializeApp(firebaseConfig);
+      setInterval(() => {
+        document.querySelector(".message-body").style.height =
+          window.innerHeight - 110 + "px";
+      }, 100);
+      var me = "";
+      window.onload = function () {
+        swal({
+          text: "Enter you Name",
+          content: "input",
+          button: {
+            text: "Go!",
+            closeModal: true,
+          },
+          allowOutsideClick: false,
+          closeOnClickOutside: false,
+        }).then((value) => {
+          if (value.trim() == "") {
+            window.location.reload();
+            return;
+          }
+          me = value;
+          document
+            .querySelector(".message-input")
+            .addEventListener("keypress", (e) => {
+              if (e.key === "Enter") {
+                firebase
+                  .database()
+                  .ref("Beasty/Texts")
+                  .push({
+                    user: me,
+                    msg: document
+                      .querySelector(".message-input")
+                      .value.trim()
+                      .replace(/</g, "&lt;"),
+                  });
+                document.querySelector(".message-input").value = "";
+              }
+            });
+          var id = "";
+          firebase
+            .database()
+            .ref("Beasty/Texts")
+            .on("child_added", (s) => {
+              document.querySelector(".loader").style.opacity = "0";
+              if (s.val().user === me) {
+                if (id !== s.val().user)
+                  document.querySelector(".message-body").innerHTML +=
+                    '<div class="my-name">You</div><div class="message-holder"><div class="my-text" onclick="deleteMsg(\'' +
+                    s.key +
+                    "')\" id=" +
+                    s.key +
+                    " >" +
+                    s.val().msg +
+                    "</div></div>";
+                else
+                  document.querySelector(".message-body").innerHTML +=
+                    '<div class="message-holder"><div class="my-text" onclick="deleteMsg(\'' +
+                    s.key +
+                    "')\" id=" +
+                    s.key +
+                    ">" +
+                    s.val().msg +
+                    "</div></div>";
+              } else {
+                if (id !== s.val().user)
+                  document.querySelector(".message-body").innerHTML +=
+                    '<div class="their-name">' +
+                    s.val().user +
+                    '</div><div class="message-holder"><div class="their-text" id=' +
+                    s.key +
+                    ">" +
+                    s.val().msg +
+                    "</div></div>";
+                else
+                  document.querySelector(".message-body").innerHTML +=
+                    '<div class="message-holder"><div class="their-text" id=' +
+                    s.key +
+                    ">" +
+                    s.val().msg +
+                    "</div></div>";
+              }
+              document.querySelector(".message-body").scrollBy(0, 1000);
+              id = s.val().user;
+              firebase
+                .database()
+                .ref("Beasty/Texts/" + s.key)
+                .on("child_changed", (a) => {
+                  document.querySelector("#" + s.key).innerHTML =
+                    "<i>This message has been Deleted</i>";
+                });
+            });
+        });
+        document.querySelector(".swal-content__input").placeholder =
+          "Your Name";
+      };
+      function deleteMsg(key) {
+        console.log(key);
+        swal({
+          title: "Are you sure you want to delete this message?",
+          text: "You cannot recover your message once deleted!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        }).then((e) => {
+          console.log(e);
+          if (e)
+            firebase
+              .database()
+              .ref("Beasty/Texts/" + key)
+              .set({ user: me, msg: "<i>This Message has been Deleted</i>" });
+        });
+      }
+    </script>
+  </body>
+</html>
